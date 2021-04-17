@@ -516,7 +516,7 @@ body {
 .big {
   height: 400px;
   width: 100%;
-  background: url(./pexels-uriel-mont-6280636.jpg);
+  background: url(https://images.pexels.com/photos/2777898/pexels-photo-2777898.jpeg);
   background-size: cover;
   background-position: center;
   border-radius: 12px;
@@ -533,7 +533,7 @@ body {
 .small {
   height: 200px;
   width: 80%;
-  background: url(./pexels-uriel-mont-6280636.jpg);
+  background: url(https://images.pexels.com/photos/2777898/pexels-photo-2777898.jpeg);
   background-size: cover;
   background-position: center;
   border-radius: 12px;
