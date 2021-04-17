@@ -82,6 +82,16 @@ i {
   cursor: pointer;
 }
 
+.dark-mode {
+  background-image: none;
+  background-color: $black;
+}
+
+.invisible {
+  display: none;
+  font-size: 0;
+}
+
 /*
 ** Animation
 */
@@ -157,6 +167,15 @@ i {
     transform: translateY(0);
   }
 }
+
+@keyframes transparency {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 /*
 ** Body
 */
@@ -165,6 +184,7 @@ body {
   background-image: $gradient;
   background-size: 400%;
   animation: animate-background 10s infinite alternate;
+  transition: background-color 0.3s ease-in-out;
 }
 
 /*
@@ -205,6 +225,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 999;
+  transition: left 0.3s ease;
   i {
     background-image: $gradient;
     background-clip: text;
@@ -214,7 +235,25 @@ body {
     top: 10%;
     right: 10%;
   }
-  transition: left 0.3s ease;
+}
+
+.moon {
+  border: 2px solid $white;
+  border-radius: 100%;
+  align-self: flex-end;
+  transition: all 0.3s ease;
+}
+
+.moon i {
+  color: $white;
+  transition: all 0.3s ease;
+  padding: 0.625rem;
+}
+
+.moon:hover {
+  transform: scale(1.1);
+  background: $black;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .menu-btn {
@@ -236,6 +275,7 @@ body {
   background-image: $gradient;
   background-size: 400%;
   background-clip: text;
+  -webkit-background-clip: text;
   font-size: $font-2xl;
   color: transparent;
   cursor: pointer;
@@ -320,6 +360,7 @@ body {
 
 .icons i {
   padding: 0.625rem;
+  color: $white;
   border: 2px solid $white;
   border-radius: 100%;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -356,12 +397,14 @@ body {
   margin-top: -10%;
   animation: bounce 3s ease-in-out infinite;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .big:hover,
 .small:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  animation: none;
+  z-index: 999;
 }
 
 .cards {
@@ -395,5 +438,110 @@ body {
   .small {
     width: 50%;
     margin-left: -10%;
+  }
+}
+
+@media screen and(min-width: 1024px) {
+  h1 {
+    font-size: $font-3xl;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+  }
+  p {
+    font-size: $font-sm;
+    word-spacing: 1px;
+    letter-spacing: 1px;
+  }
+  .container {
+    padding: 5% 10%;
+  }
+  .logo {
+    font-size: $font-4xl;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(1);
+    animation: transparency 1s ease-in;
+    animation-fill-mode: forwards;
+    .circle {
+      margin-left: 0.625rem;
+    }
+  }
+  .menu {
+    background-color: transparent;
+    margin-left: 2rem;
+    width: 100%;
+    height: 100%;
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 999;
+    opacity: 0;
+    animation: transparency 1s ease-in;
+    animation-fill-mode: forwards;
+    .navbar-link {
+      display: inline-block;
+      color: $white;
+      font-size: $font-base;
+      font-weight: 300;
+      background-image: none;
+      margin-left: 0.625rem;
+      margin-bottom: 0;
+    }
+    .navbar-link:hover {
+      color: $blue;
+      background-color: $white;
+    }
+    i {
+      display: none;
+    }
+    transition: left 0.3s ease;
+  }
+  .menu-btn {
+    display: none;
+  }
+  .cta {
+    margin: 2.5rem 0;
+    padding: 2rem 2rem;
+  }
+  .cta::placeholder {
+    font-size: $font-xl;
+  }
+  .input-box .icon i {
+    font-size: $font-4xl;
+    right: -160%;
+  }
+  .main .container {
+    flex-direction: row;
+    h1 {
+      transform: translateX(-150%);
+    }
+    p {
+      transform: translateX(-150%);
+    }
+  }
+  .left {
+    width: 100%;
+    padding: 2% 0%;
+  }
+  .right {
+    width: 100%;
+    padding: 2% 0%;
+    padding-left: 5%;
+    .icons {
+      justify-content: center;
+      i {
+        margin-left: 0.625rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .menu {
+    justify-content: flex-end;
   }
 }

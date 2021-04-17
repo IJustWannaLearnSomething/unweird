@@ -40,6 +40,16 @@ i {
   cursor: pointer;
 }
 
+.dark-mode {
+  background-image: none;
+  background-color: #191919;
+}
+
+.invisible {
+  display: none;
+  font-size: 0;
+}
+
 /*
 ** Animation
 */
@@ -212,6 +222,24 @@ i {
   }
 }
 
+@-webkit-keyframes transparency {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes transparency {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /*
 ** Body
 */
@@ -221,6 +249,8 @@ body {
   background-size: 400%;
   -webkit-animation: animate-background 10s infinite alternate;
           animation: animate-background 10s infinite alternate;
+  -webkit-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
 }
 
 /*
@@ -291,6 +321,30 @@ body {
   right: 10%;
 }
 
+.moon {
+  border: 2px solid #fdfdfd;
+  border-radius: 100%;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.moon i {
+  color: #fdfdfd;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  padding: 0.625rem;
+}
+
+.moon:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  background: #191919;
+  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
 .menu-btn {
   -webkit-transform: scale(0);
           transform: scale(0);
@@ -314,6 +368,7 @@ body {
   background-image: linear-gradient(to right, #5a4fa1, #985898, #9851c5, #fd748e);
   background-size: 400%;
   background-clip: text;
+  -webkit-background-clip: text;
   font-size: 1.5rem;
   color: transparent;
   cursor: pointer;
@@ -439,6 +494,7 @@ body {
 
 .icons i {
   padding: 0.625rem;
+  color: #fdfdfd;
   border: 2px solid #fdfdfd;
   border-radius: 100%;
   -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -486,16 +542,17 @@ body {
           animation: bounce 3s ease-in-out infinite;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  -webkit-transition: -webkit-box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition: -webkit-box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .big:hover,
 .small:hover {
   -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
           box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  -webkit-animation: none;
+          animation: none;
+  z-index: 999;
 }
 
 .cards {
@@ -543,6 +600,150 @@ body {
   .small {
     width: 50%;
     margin-left: -10%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  h1 {
+    font-size: 1.875rem;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+  }
+  p {
+    font-size: 0.875rem;
+    word-spacing: 1px;
+    letter-spacing: 1px;
+  }
+  .container {
+    padding: 5% 10%;
+  }
+  .logo {
+    font-size: 2.25rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    opacity: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation: transparency 1s ease-in;
+            animation: transparency 1s ease-in;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+  }
+  .logo .circle {
+    margin-left: 0.625rem;
+  }
+  .menu {
+    background-color: transparent;
+    margin-left: 2rem;
+    width: 100%;
+    height: 100%;
+    position: static;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    z-index: 999;
+    opacity: 0;
+    -webkit-animation: transparency 1s ease-in;
+            animation: transparency 1s ease-in;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+    -webkit-transition: left 0.3s ease;
+    transition: left 0.3s ease;
+  }
+  .menu .navbar-link {
+    display: inline-block;
+    color: #fdfdfd;
+    font-size: 1rem;
+    font-weight: 300;
+    background-image: none;
+    margin-left: 0.625rem;
+    margin-bottom: 0;
+  }
+  .menu .navbar-link:hover {
+    color: #8db9df;
+    background-color: #fdfdfd;
+  }
+  .menu i {
+    display: none;
+  }
+  .menu-btn {
+    display: none;
+  }
+  .cta {
+    margin: 2.5rem 0;
+    padding: 2rem 2rem;
+  }
+  .cta::-webkit-input-placeholder {
+    font-size: 1.25rem;
+  }
+  .cta:-ms-input-placeholder {
+    font-size: 1.25rem;
+  }
+  .cta::-ms-input-placeholder {
+    font-size: 1.25rem;
+  }
+  .cta::placeholder {
+    font-size: 1.25rem;
+  }
+  .input-box .icon i {
+    font-size: 2.25rem;
+    right: -160%;
+  }
+  .main .container {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .main .container h1 {
+    -webkit-transform: translateX(-150%);
+            transform: translateX(-150%);
+  }
+  .main .container p {
+    -webkit-transform: translateX(-150%);
+            transform: translateX(-150%);
+  }
+  .left {
+    width: 100%;
+    padding: 2% 0%;
+  }
+  .right {
+    width: 100%;
+    padding: 2% 0%;
+    padding-left: 5%;
+  }
+  .right .icons {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .right .icons i {
+    margin-left: 0.625rem;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .menu {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
 }
 /*# sourceMappingURL=index.css.map */
