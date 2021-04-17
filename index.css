@@ -689,6 +689,7 @@ body {
   .cta {
     margin: 2.5rem 0;
     padding: 2rem 2rem;
+    font-size: 1.25rem;
   }
   .cta::-webkit-input-placeholder {
     font-size: 1.25rem;
